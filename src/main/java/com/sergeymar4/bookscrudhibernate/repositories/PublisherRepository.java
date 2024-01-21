@@ -5,16 +5,33 @@ import com.sergeymar4.bookscrudhibernate.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.query.Query;
+
 public class PublisherRepository {
 
-    public Publisher getByTitle(String title) {
+    public Publisher getById(int id) {
         Publisher publisher = new Publisher();
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            publisher = session.get(Publisher.class, title);
+            publisher = session.get(Publisher.class, id);
         }
 
         return publisher;
+    }
+
+    public List<Publisher> getByTitle(String title) {
+        List<Publisher> publishers = new ArrayList<>();
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("from Publisher where title=:title");
+            query.setParameter("title", title);
+            publishers = query.list();
+        }
+
+        return publishers;
     }
 
     public void create(Publisher publisher) {
