@@ -29,14 +29,16 @@ public class BookView {
             String s = scanner.next();
 
             if (s.equals("1")) {
-                System.out.println("Введите id автора = ");
+                System.out.println("Введите id книги = ");
                 int id = scanner.nextInt();
-                bookController.getById(id);
+                System.out.println(bookController.getById(id));
             } else if (s.equals("2")) {
                 System.out.println("Введите название книги = ");
                 String title = scanner.next();
-                bookController.getByTitle(title);
+                System.out.println(bookController.getByTitle(title));
             } else if (s.equals("3")) {
+                System.out.println("Введите id издательства книги = ");
+                int publisher_id = scanner.nextInt();
                 System.out.println("Введите название книги = ");
                 String title = scanner.next();
                 System.out.println("Введие количество страниц = ");
@@ -45,8 +47,10 @@ public class BookView {
                 int year = scanner.nextInt();
                 System.out.println("Введите жанр книги = ");
                 String genre = scanner.next();
-                bookController.save(title, pages, year, genre);
+                bookController.save(publisher_id, title, pages, year, genre);
             } else if (s.equals("4")) {
+                System.out.println("Введите id издательства книги = ");
+                int publisher_id = scanner.nextInt();
                 System.out.println("Введите id книги = ");
                 int id = scanner.nextInt();
                 System.out.println("Введите название книги = ");
@@ -57,7 +61,7 @@ public class BookView {
                 int year = scanner.nextInt();
                 System.out.println("Введите жанр книги = ");
                 String genre = scanner.next();
-                bookController.update(id, title, pages, year, genre);
+                bookController.update(id, publisher_id, title, pages, year, genre);
             } else if (s.equals("5")) {
                 System.out.println("Введите id книги = ");
                 int id = scanner.nextInt();

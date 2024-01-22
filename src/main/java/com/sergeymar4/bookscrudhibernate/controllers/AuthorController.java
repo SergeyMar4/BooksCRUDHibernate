@@ -1,6 +1,7 @@
 package com.sergeymar4.bookscrudhibernate.controllers;
 
 import com.sergeymar4.bookscrudhibernate.models.Author;
+import com.sergeymar4.bookscrudhibernate.models.Book;
 import com.sergeymar4.bookscrudhibernate.repositories.AuthorRepository;
 import com.sergeymar4.bookscrudhibernate.utils.HibernateUtil;
 import org.hibernate.Session;
@@ -32,7 +33,12 @@ public class AuthorController {
     }
 
     public void update(int id, String firstName, String lastName, int birthYear, String state) {
-        authorRepository.update(authorRepository.getById(id));
+        Author author = authorRepository.getById(id);
+        author.setFirstName(firstName);
+        author.setLastName(lastName);
+        author.setBirthYear(birthYear);
+        author.setState(state);
+        authorRepository.update(author);
     }
 
     public void delete(int id) {

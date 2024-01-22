@@ -16,7 +16,7 @@ public class Publisher {
     private int foundationYear;
     @Column(name = "city")
     private String city;
-    @OneToMany(mappedBy = "book")
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
     private List<Book> books;
 
     public int getId() {

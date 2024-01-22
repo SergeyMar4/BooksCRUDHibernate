@@ -31,11 +31,11 @@ public class PublisherView {
             if (s.equals("1")) {
                 System.out.println("Введите id издательства = ");
                 int id = scanner.nextInt();
-                publisherController.getById(id);
+                System.out.println(publisherController.getById(id));
             } else if (s.equals("2")) {
                 System.out.println("Введите название издательства = ");
                 String title = scanner.next();
-                publisherController.getByTitle(title);
+                System.out.println(publisherController.getByTitle(title));
             } else if (s.equals("3")) {
                 System.out.println("Введите название издательства = ");
                 String title = scanner.next();

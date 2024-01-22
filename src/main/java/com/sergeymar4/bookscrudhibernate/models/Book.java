@@ -18,9 +18,10 @@ public class Book {
     private int year;
     @Column(name = "genre")
     private String genre;
-    @Column(name = "publisher_id")
-    private int publisher_id;
-    @ManyToMany
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable (
             name = "author_book",
             joinColumns = @JoinColumn(name = "book_id"),
@@ -68,12 +69,20 @@ public class Book {
         this.genre = genre;
     }
 
-    public int getPublisher_id() {
-        return publisher_id;
+    public Publisher getPublisher() {
+        return publisher;
     }
 
-    public void setPublisher_id(int publisher_id) {
-        this.publisher_id = publisher_id;
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     @Override
@@ -84,7 +93,8 @@ public class Book {
                 ", pages=" + pages +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
-                ", publisher_id=" + publisher_id +
+                ", publisher=" + publisher +
+                ", authors=" + authors +
                 '}';
     }
 }
