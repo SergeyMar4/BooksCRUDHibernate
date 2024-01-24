@@ -1,6 +1,8 @@
 package com.sergeymar4.bookscrudhibernate.controllers;
 
+import com.sergeymar4.bookscrudhibernate.models.Book;
 import com.sergeymar4.bookscrudhibernate.models.Publisher;
+import com.sergeymar4.bookscrudhibernate.repositories.BookRepository;
 import com.sergeymar4.bookscrudhibernate.repositories.PublisherRepository;
 import org.hibernate.Session;
 
@@ -8,9 +10,11 @@ import java.util.List;
 
 public class PublisherController {
     private PublisherRepository publisherRepository;
+    private BookRepository bookRepository;
 
     public PublisherController() {
         this.publisherRepository = new PublisherRepository();
+        this.bookRepository = new BookRepository();
     }
 
     public Publisher getById(int id) {
@@ -19,6 +23,10 @@ public class PublisherController {
 
     public List<Publisher> getByTitle(String title) {
         return publisherRepository.getByTitle(title);
+    }
+
+    public void addBook(int publisher_id, int book_id) {
+        publisherRepository.addBook(publisherRepository.getById(publisher_id), bookRepository.getById(book_id));
     }
 
     public void save(String title, int foundationYear, String city) {

@@ -1,5 +1,6 @@
 package com.sergeymar4.bookscrudhibernate.repositories;
 
+import com.sergeymar4.bookscrudhibernate.models.Author;
 import com.sergeymar4.bookscrudhibernate.models.Book;
 import com.sergeymar4.bookscrudhibernate.utils.HibernateUtil;
 import org.hibernate.Session;
@@ -31,6 +32,15 @@ public class BookRepository {
         }
 
         return books;
+    }
+
+    public void addAuthor(Book book, Author author) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            book.getAuthors().add(author);
+            Transaction transaction = session.beginTransaction();
+            session.update(book);
+            transaction.commit();
+        }
     }
 
     public void create(Book book) {

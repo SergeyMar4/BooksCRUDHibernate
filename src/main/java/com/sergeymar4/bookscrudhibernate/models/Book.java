@@ -93,7 +93,6 @@ public class Book {
                 ", pages=" + pages +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
-                ", publisher=" + publisher +
                 ", authors=" + authors +
                 '}';
     }

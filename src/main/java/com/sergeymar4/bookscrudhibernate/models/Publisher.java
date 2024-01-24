@@ -51,6 +51,14 @@ public class Publisher {
         this.city = city;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
@@ -58,6 +66,7 @@ public class Publisher {
                 ", title='" + title + '\'' +
                 ", foundationYear=" + foundationYear +
                 ", city='" + city + '\'' +
+                ", books=" + books +
                 '}';
     }
 }

@@ -17,7 +17,8 @@ public class PublisherView {
                 "3.Создать\n" +
                 "4.Обновить\n" +
                 "5.Удалить\n" +
-                "6.Выйти в главное меню";
+                "6.Добавить книгу\n" +
+                "7.Выйти в главное меню";
         this.scanner = scanner;
         this.publisherController = new PublisherController();
     }
@@ -58,6 +59,12 @@ public class PublisherView {
                 System.out.println("Введите id издательства = ");
                 int id = scanner.nextInt();
                 publisherController.delete(id);
+            } else if (s.equals("6")) {
+                System.out.println("Введите id издательства = ");
+                int publisher_id = scanner.nextInt();
+                System.out.println("Введите id книги = ");
+                int book_id = scanner.nextInt();
+                publisherController.addBook(publisher_id, book_id);
             } else {
                 break;
             }

@@ -14,7 +14,7 @@ public class MainView {
                             "1.Author\n" +
                             "2.Book\n" +
                             "3.Publisher\n" +
-                            "4. Завершение программы";
+                            "4.Завершение программы";
         this.scanner = new Scanner(System.in);
         this.authorView = new AuthorView(scanner);
         this.bookView = new BookView(scanner);

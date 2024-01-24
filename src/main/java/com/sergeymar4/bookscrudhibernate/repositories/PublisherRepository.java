@@ -1,5 +1,6 @@
 package com.sergeymar4.bookscrudhibernate.repositories;
 
+import com.sergeymar4.bookscrudhibernate.models.Book;
 import com.sergeymar4.bookscrudhibernate.models.Publisher;
 import com.sergeymar4.bookscrudhibernate.utils.HibernateUtil;
 import org.hibernate.Session;
@@ -32,6 +33,15 @@ public class PublisherRepository {
         }
 
         return publishers;
+    }
+
+    public void addBook(Publisher publisher, Book book) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            publisher.getBooks().add(book);
+            Transaction transaction = session.beginTransaction();
+            session.update(publisher);
+            transaction.commit();
+        }
     }
 
     public void create(Publisher publisher) {
